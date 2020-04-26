@@ -56,9 +56,9 @@ const PreRouterSearchBar = (props) => {
                 ref={selectIn}
                 isClearable={true}
                 options={[
-                  { value: 'bakeries', label: 'Bakeries' },
+                  { value: 'parks', label: 'Parks' },
                   { value: 'sandwiches', label: 'Sandwiches' },
-                  { value: 'foodtrucks', label: 'Foodtrucks' }
+                  { value: 'museum', label: 'Museum' }
                 ]}
                 multi={true}
                 // onChange={this.handleChange}
