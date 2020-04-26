@@ -1,13 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Prerequisite-Getting Started
+1. create .env file and define the following environmental variable:
+REACT_APP_SERVER_URL=<YOUR_SERVER_URL>
+2. run `npm i` command
 
 ## Available Scripts
 
 In the project directory, you can run:
-
-### Prerequisite
-1. create .env file and define the following environmental variable:
-REACT_APP_SERVER_URL=<YOUR_SERVER_URL>
-2. run `npm i` command
 
 ### `npm start`
 
