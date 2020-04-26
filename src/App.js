@@ -85,11 +85,7 @@ function App() {
 export default App
 
 const Container = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 0 auto;
-  height: auto;
-  border: 2px solid green;
+  background: blueviolet;
 `

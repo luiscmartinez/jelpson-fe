@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { Formik, Form, Field } from 'formik'
 import axios from 'axios'
@@ -10,22 +10,26 @@ const formikEnhancer = withFormik({
   mapPropsToValues: (props) => ({
     location: '',
     categories: [],
-    catagory: ''
+    term: ''
   })
 })
 
 const PreRouterSearchBar = (props) => {
   console.log(props.values)
-
+  const selectIn = useRef(null)
   const handleSubmit = (values) => {
-    console.log('what are the values', values)
+    console.log('what are the values', values, selectIn.current)
     if (values.location) {
+      const filter =
+        selectIn.current.state.value === null
+          ? ''
+          : selectIn.current.state.value.value
       window.localStorage.setItem('location', JSON.stringify(values.location))
       axios
         .get('http://localhost:8000/api/v1/yelp/search', {
           params: {
             location: values.location,
-            categories: ''
+            categories: filter
           }
         })
         .then(({ data }) => props.setBusinesses(data.businesses, data.total))
@@ -38,7 +42,7 @@ const PreRouterSearchBar = (props) => {
       <p>Jelpson</p>
 
       <Formik
-        initialValues={{ location: JSON.parse(localLocation), categories: [] }}
+        initialValues={{ location: JSON.parse(localLocation), term: [] }}
         onSubmit={handleSubmit}
         enableReinitialize={true}
       >
@@ -46,21 +50,21 @@ const PreRouterSearchBar = (props) => {
           <Form className='inputs-container'>
             <div className='search-container type'>
               <label htmlFor='term'>Catagory?</label>
-              <Field
+
+              <Select
                 id='term'
-                type='text'
-                value={props.values.catagory}
-                placeholder='bars, clubs, breweries, venues...'
+                ref={selectIn}
+                isClearable={true}
+                options={[
+                  { value: 'bakeries', label: 'Bakeries' },
+                  { value: 'sandwiches', label: 'Sandwiches' },
+                  { value: 'foodtrucks', label: 'Foodtrucks' }
+                ]}
+                multi={true}
+                // onChange={this.handleChange}
+                // onBlur={this.handleBlur}
                 name='term'
               />
-              {/* <Select
-                id='color'
-                options={[]}
-                multi={true}
-                onChange={this.handleChange}
-                onBlur={this.handleBlur}
-                value={props.values.categories}
-              /> */}
             </div>
             <div className='search-container locale'>
               <label htmlFor='location'>Where?</label>
@@ -84,15 +88,14 @@ const PreRouterSearchBar = (props) => {
 const StyledHero = styled.div`
   position: relative;
   background-image: url('https://images.squarespace-cdn.com/content/v1/5c15ec1ce74940545d798ed2/1578436564506-TDJ20B164PD29I3MVBEX/ke17ZwdGBToddI8pDm48kMODvtMXx2HcJWIP_usaibsUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcePFY_vJjrcB0eHdyVLmKKl3RbNnNgnVSmG3oHNOOIKpDmBPzNKSNAitbcxFqxEg1/all-businesses.png?format=2500w');
-  background-color: #333;
+  background-color: black;
   background-size: cover;
   background-position: center;
   height: 650px;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-flow: column;
-  #color {
+  #term {
     width: 75%;
   }
   p {

@@ -22,14 +22,16 @@ export const Home = ({
   return (
     <Container>
       <SearchBar setBusinesses={setBusinesses} />
-      <div className='businesses'>
-        {businesses.map((business, i) => (
-          <MediaCard
-            key={i}
-            business={business}
-            handlePagination={handlePagination}
-          />
-        ))}
+      <div className='businessWrapper'>
+        <div className='businesses'>
+          {businesses.map((business, i) => (
+            <MediaCard
+              key={i}
+              business={business}
+              handlePagination={handlePagination}
+            />
+          ))}
+        </div>
       </div>
       <ReactPaginate
         previousLabel={'previous'}
@@ -50,21 +52,19 @@ export const Home = ({
 }
 
 const Container = styled.div`
-  position: relative;
   width: 100%;
-  /* height: 98vh; */
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  .businessWrapper {
+    display: flex;
+    justify-content: center;
+  }
   .businesses {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: center;
     flex-flow: row wrap;
-    width: 92%;
-    margin: 0 auto;
-    border: 2px solid green;
-
+    max-width: 60em;
+    margin-top: 5px;
     .category {
       &:hover {
         color: orangered;
@@ -83,7 +83,7 @@ const Container = styled.div`
     padding-left: 15px;
     padding-right: 15px;
     margin: 0 auto;
-    border: 2px solid red;
+    border: 2px solid gray;
     font-size: 2rem;
     width: 17em;
     display: flex;
@@ -92,7 +92,6 @@ const Container = styled.div`
 
   .pagination li {
     display: inline-block;
-    /* border: 2px solid red; */
     &:hover {
       color: #bb24f4;
       cursor: pointer;

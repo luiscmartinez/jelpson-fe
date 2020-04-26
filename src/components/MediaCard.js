@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   root: {
-    width: 345
+    width: '25%',
+    minWidth: '350px'
   },
   media: {
     height: 140
