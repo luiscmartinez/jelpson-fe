@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Prerequisite-Getting Started
+1. create .env file and define the following environmental variable:
+REACT_APP_SERVER_URL=<YOUR_SERVER_URL>
+2. run `npm i` command
 
 ## Available Scripts
 
@@ -11,11 +14,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
