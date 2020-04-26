@@ -26,7 +26,7 @@ const PreRouterSearchBar = (props) => {
           : selectIn.current.state.value.value
       window.localStorage.setItem('location', JSON.stringify(values.location))
       axios
-        .get('http://localhost:8000/api/v1/yelp/search', {
+        .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/yelp/search`, {
           params: {
             location: values.location,
             categories: filter
