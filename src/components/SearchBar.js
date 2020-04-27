@@ -49,7 +49,7 @@ const PreRouterSearchBar = (props) => {
         {() => (
           <Form className='inputs-container'>
             <div className='search-container type'>
-              <label htmlFor='term'>Catagory?</label>
+              <label htmlFor='term'>category?</label>
 
               <Select
                 id='term'

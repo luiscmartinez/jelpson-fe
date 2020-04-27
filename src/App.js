@@ -8,7 +8,7 @@ import { Home } from './components'
 function App() {
   const [state, setState] = useState({
     businesses: [],
-    catagory: '',
+    category: '',
     restartPaginate: false
   })
   const setBusinesses = (businesses, total) => {
@@ -16,16 +16,16 @@ function App() {
     window.localStorage.setItem('total', JSON.stringify(total))
     setState({ businesses, total })
   }
-  const handlePagination = (offset, catagory = '', resetTotal = false) => {
-    if (catagory) {
-      window.localStorage.setItem('catagory', JSON.stringify(catagory))
+  const handlePagination = (offset, category = '', resetTotal = false) => {
+    if (category) {
+      window.localStorage.setItem('category', JSON.stringify(category))
     }
 
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/yelp/search`, {
         params: {
           location: window.localStorage.getItem('location'),
-          categories: catagory || state.catagory,
+          categories: category || state.category,
           offset: offset
         }
       })
@@ -35,7 +35,7 @@ function App() {
             ...state,
             businesses: data.businesses,
             total: data.total,
-            catagory,
+            category,
             restartPaginate: true
           })
         }
