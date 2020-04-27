@@ -11,10 +11,10 @@ function App() {
     category: '',
     restartPaginate: false
   })
-  const setBusinesses = (businesses, total) => {
+  const setBusinesses = (businesses, total, category) => {
     window.localStorage.setItem('businesses', JSON.stringify(businesses))
     window.localStorage.setItem('total', JSON.stringify(total))
-    setState({ businesses, total })
+    setState({ businesses, total, category })
   }
   const handlePagination = (offset, category = '', resetTotal = false) => {
     if (category) {
@@ -73,6 +73,7 @@ function App() {
                 total={total}
                 handlePagination={handlePagination}
                 restartPaginate={restartPaginate}
+                category={state.category}
               />
             )}
           />

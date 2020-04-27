@@ -24,6 +24,7 @@ const PreRouterSearchBar = (props) => {
         selectIn.current.state.value === null
           ? ''
           : selectIn.current.state.value.value
+      
       window.localStorage.setItem('location', JSON.stringify(values.location))
       axios
         .get(`${process.env.REACT_APP_SERVER_URL}/api/v1/yelp/search`, {
@@ -32,7 +33,7 @@ const PreRouterSearchBar = (props) => {
             categories: filter
           }
         })
-        .then(({ data }) => props.setBusinesses(data.businesses, data.total))
+        .then(({ data }) => props.setBusinesses(data.businesses, data.total,filter))
     }
   }
   const localLocation = window.localStorage.getItem('location')

@@ -9,14 +9,16 @@ export const Home = ({
   businesses,
   handlePagination,
   total,
-  restartPaginate
+  restartPaginate,
+  category
 }) => {
   const totalNumOfPages = total >= 1000 ? 1000 / 5 : total / 5
   const handlePageChange = (data) => {
     let selected = data.selected
     let offset = Math.ceil(selected * 5)
     console.log(data, offset)
-    handlePagination(offset)
+
+    handlePagination(offset, category)
   }
 
   return (
