@@ -58,7 +58,7 @@ const PreRouterSearchBar = (props) => {
                 options={[
                   { value: 'parks', label: 'Parks' },
                   { value: 'sandwiches', label: 'Sandwiches' },
-                  { value: 'museum', label: 'Museum' }
+                  { value: 'museums', label: 'Museums' }
                 ]}
                 multi={true}
                 // onChange={this.handleChange}
