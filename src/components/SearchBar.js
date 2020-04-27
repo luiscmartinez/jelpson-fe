@@ -33,7 +33,7 @@ const PreRouterSearchBar = (props) => {
             categories: filter
           }
         })
-        .then(({ data }) => props.setBusinesses(data.businesses, data.total,filter))
+        .then(({ data }) => props.setBusinesses(data.businesses, data.total,filter, true))
     }
   }
   const localLocation = window.localStorage.getItem('location')
